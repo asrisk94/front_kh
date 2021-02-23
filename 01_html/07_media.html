@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>media</title>
+</head>
+<body>
+    <h1>Media</h1>
+    <h2>audio</h2>
+    <!-- 클릭시 재생 -->
+    <audio src="sample/audio/major.mp3" controls="controls"></audio>
+    <!-- 페이지 들어오면 자동 재생 -->
+    <!-- <audio src="sample/audio/major.mp3" controls autoplay></audio> -->
+    <!-- 반복재생 -->
+    <audio src="sample/audio/major.mp3" controls loop></audio>
+    <!-- 음소거 -->
+    <audio src="sample/audio/major.mp3" controls muted></audio>
+        <!-- fallback : 해당태그를 브라우저에서 제원하지 않는 경우 실행. 태그 안에 넣어두면 된다. -->
+        당신의 브라우저는 audio태그를 지원하지 않습니다.
+        최신 브라우저로 업데이트하세요. <a href="edge다운로드링크">바로가기</a>
+    <h2>video</h2>
+    <video src="sample/video/small.mp4" controls poster="sample/image/hyunta.jpg" ></video>
+
+    <iframe width="560" height="315" 
+    src="https://www.youtube.com/embed/GSry6GgjsoI" 
+    frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+    allowfullscreen></iframe>
+</body>
+</html>

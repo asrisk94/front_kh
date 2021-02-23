@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>function</title>
+
+    <script>
+        // window.onload 이벤트
+
+        // 페이지 내에 모든 html태그에 대한 DOM 등록이 완료된 시점에 load 이벤트 발생
+        window.onload = function() {
+            bar();  // 변수 선언은 밑에 있지만, 한번 다 읽었기 때문에 괜찮다.
+        }
+
+    </script>
+
+
+</head>
+<body>
+    <h1>Function</h1>
+    <h2>함수선언 | 함수표현</h2>
+
+    <script>
+        
+        // 함수는 값으로 쓸 수 있다. (변수에 담길 수 있다)
+        // 정확히는 함수 내부 내용이 담길 수 있다.
+        
+
+        // 함수선언 function declaration
+        // hoisting 대상.
+
+        foo();  // 함수선언 전에 호출가능
+        
+        function foo() {
+            console.log("foo 호출");
+        }
+
+        
+
+        // 함수표현식 function expressiong
+        // 함수 자체는 hoisting 되지 않아서 미리 호출 불가.
+        
+        var bar;    // 이런 선언에는 문제 없음. 그냥 변수 선언임(함수인줄 모름)
+        // bar();  // 이렇게는 호출 불가. (변수만 호이스팅 되었을 뿐 함수는 안됨.)
+
+        var bar = function() {
+            console.log("bar 호출!");
+        }
+        
+        bar();  // 이렇게 밑에서나 가능.
+
+    </script>
+
+    <h2>즉시실행함수</h2>
+
+    <script>
+        /*
+        *   IIFE
+        *   Immediately Invoked Function Expression
+        *   함수 선언과 실행을 동시에 처리
+        */
+
+        (function(a) {
+            console.log("iife type1 호출! " + a);
+        })(50);                                   // 즉시 사용되고 있다.
+
+        (function(a) {
+            console.log("iife type2 호출 " + a);
+        }(100));                                   // 둘 중에 마음에 드는 걸로 쓰면 된다. 
+        // 매개변수 전달 또한 가능하다.
+
+    </script>
+
+    <h2>함수의 매개변수 | 매개인자</h2>
+
+    <input type="button" value="test1(3, 7)" onclick="test1();">
+    <input type="button" value="test1(3, 7)" onclick="test1(3);">
+    <input type="button" value="test1(3, 7)" onclick="test1(3, 7);">
+    <input type="button" value="test1(3, 7)" onclick="test1(3, 7, 10);">
+    <!-- 매개변수 숫자가 안맞아도 오류는 안뜬다. -->
+    <!-- 언디파인드 뜨거나 안써서 버려지거나 할 뿐 -->
+
+    <script>
+
+        // 매개변수(parameter) : 함수 선언부에 값(매개인자)이 전달된 공간
+        // 매개인자(argument) : 함수 호출부에 전달되는 값
+        function test1(a, b) {          // 
+            console.log("a = " + a);
+            console.log("b = " + b);
+        
+            // 숨겨진 참조 arguments 매개인자를 유사배열로 가지고 있다.
+            console.log(arguments);
+            for(var i=0; i<arguments.length; i++) {
+                console.log(i + " : " + arguments[i]);
+            }
+        }
+    </script>
+
+    <h2>값으로써의 함수</h2>
+
+    <input type="button" value="매개인자" onclick="test2(foo);">
+    <input type="button" value="리턴값" onclick="test3();">
+
+
+    <script>
+    
+        // 함수를 리턴할 수 있다.
+        function test3() {
+            var f = koo();
+            console.log(f);         // function() { console.log("Hello~"); }; 
+            console.log(typeof f);  // function
+            f("honggd");                    // Hello~honggd
+
+            (koo())('honggd');  // 이러면 110번, 113번 줄 동시 실행
+            (function(name) {
+                console.log("Hello~" + name);
+            })('sejong');                       // 같은 결과
+        }
+        
+        function koo() {
+            return function(name) {
+                console.log("Hello~" + name);
+            }; 
+        }
+    
+
+
+        // 함수는 매개인자로 사용가능하다.
+
+        function test2(f) {
+            console.log(f);     // function foo() {console.log("foo 호출");}
+            console.log(typeof f);  // function
+            
+            f();    // 받아온 함수 실행 가능
+            for(var i=0; i<100; i++) {
+                f();
+            }
+        }
+    </script>
+
+
+</body>
+</html>

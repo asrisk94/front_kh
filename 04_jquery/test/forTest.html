@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/jquery-3.5.1.js"></script>
+
+    <style>
+        .wrap {
+            height: 200px;
+            width: 200px;
+            background-color: orangered;
+        }
+    </style>
+
+    <script>
+        window.onload = function() {
+
+            $(function(){
+
+                $("#copy").click(function(){
+
+                    $(this).parent().clone().appendTo($(".wrap2"));
+
+                });
+
+                $("#delete").click(function(){
+
+                    $(this).parent().remove();
+
+                });
+
+            });
+
+            // $(".copy").click(function() {
+            //     $wrap = $("div:nth-of-type(1)").clone();
+            //     $wrap.appendTo($(".wrap2"));
+            // });
+
+
+            
+            // $(".copy").click(function() {
+            //     $(".wrap2").append($(".wrap").clone());
+            // });
+
+            // $(".delete").click(function() {
+            //     $(".wrap2").children().remove();
+            // });
+
+
+
+        }
+    </script>
+
+</head>
+
+<body>
+    <div class="wrap">
+        <input type="button" value="복사하기" id="copy">
+        <input type="button" value="삭제하기" id="delete">
+    </div>
+    <hr>
+    <div class="wrap2"></div>
+
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello Javascript</title>
+    
+    <!-- 외부 js파일을 가져와서 실행 -->
+    <script src="js/hello.js"></script>
+
+    <script>
+        // 좋은 내부스크립트 작성위치 1
+        // alert(12345);
+
+        // 함수선언
+        function foo() {
+            console.log('hello~ console');
+        }
+    </script>
+
+</head>
+<body>
+    <h1>hello javascript</h1>
+
+    <p>mocha -> livescript -> javsscript</p>
+    <p>event-driven, functional</p>
+
+    <ol>
+        <li>
+            html태그에 evenet관련 inline 속성에 스크립트 작성
+            <!--js 문자열은 홑따옴표, 쌍따옴표 모두 허용-->
+            <button type="button" onclick="alert('안녕!');">클릭 미</button>
+            <!-- 온클릭은 버튼 눌렀을 때 반응 -->
+        </li>
+        <li>
+            문서내에 script태그 안 내부스크립트 작성
+            <button type="button" onclick="foo();">함수호출 </button>
+            &nsbsp; &nbsp;
+            <button type="button" onclick="bar('ㅋㅋㅋ');">함수호출2</button>
+        </li>
+        <li>
+            외부스크립트를 작성하고, 문서에서 가져와 <span onmouseover="test();">실행</span>
+            <!-- 온마우스오버 = 호버 -->
+        </li>
+    </ol>
+
+    <h1>Data Type</h1>
+    <p>변수 선언시 자료형이 정해지지 않고, 값 대입시 자료형이 결정된다.</p>
+    <input type="button" value="실행" onclick="test1();">
+
+    <script>
+        function test1() {
+            var a; // 자료형이 정해지지 않음.
+            console.log(a); // undefined
+            a = 100;        
+            console.log(a); // 100
+            console.log(typeof a);  // 타입을 알려준다. (여기서는 넘버. 정수실수 구분 없음)
+            
+            a = '안녕'; // 이미 넘버형이었으나 이렇게 다른 자료형을 담을 수 있다.
+            console.log(a);
+            console.log(typeof a);  // 이 시점의 타입을 알려준다. (여기서는 스트링)
+
+            var userName = '홍길동';        // 스트링
+            var user_age = 30;              // 넘버
+            var married = true;             // boolean
+            var weight = 60.45;             // 넘버
+
+            console.log("userName = " + userName);
+            console.log("user_age = " + user_age);
+            console.log("married = " + married);
+            console.log("weight = " + weight);
+            console.log(typeof userName);
+            console.log(typeof user_age);
+            console.log(typeof married);
+            console.log(typeof weight);
+
+            var arr = ['a', 'b', 'c'];      // 배열표현식이 {}가 아닌 []이므로 주의
+            var user = {
+                name : '홍길동',
+                age : 30,
+                id : 'honggd'
+            };                              // 자바처럼 객체 생성 가능 (얘는 맵이랑 비슷)
+
+            console.log(arr);
+            console.log(typeof arr);        // 타입은 무조건 오브젝트
+            console.log(user);
+            console.log(typeof user);       // 오브젝트
+
+            for(var i=0; i<arr.length; i++) {
+                console.log(arr[i]);
+            }
+
+            var func = bar;             // 함수를 변수에 담을 수 있다. (함수를 값처럼 취급)
+            console.log(func);
+            console.log(typeof func);   // function
+            func('오마이갓');
+
+        }
+    </script>
+
+    <script>
+        // 스크립트 작성하기 좋은 위치 2
+        // html 태그 해석이 모두 끝나서 1보다 더 좋다.
+        function bar(s) {
+            console.log(s);
+        }
+    </script>
+
+</body>
+</html>

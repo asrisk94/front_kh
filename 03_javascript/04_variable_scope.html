@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Variable & Scope</title>
+</head>
+<body>
+    <h1>variable & scope</h1>
+
+    <input type="button" value="실행" onclick="test1();">
+
+    <script>
+        // 지역변수 : 함수 안에 선언한 변수
+        // 전역변수 : 함수 밖에 선언한 변수. window 객체(탭 최상위 객체)의 속성
+    
+        var a = 100;    // 전역변수
+
+        function test1() {
+            var a = 88;
+            var b = 99; // 지역변수
+            console.log("a = " + a);
+            console.log("b = " + b);
+            // 이 안에서 a에 값 대입을 해도 전역변수에는 영향 x
+
+            // 전역변수 a를 호출
+            // 일반함수 안의 this는 window객체를 가리킨다.
+            console.log("this.a = " + this.a);      // 이러면 100이 나온다.
+        }
+
+        // scope : 유효범위. 생존주기(life cycle)와 관련.
+        // javascript에서는 c계열언어의 block scope가 아닌 function scope가 존재한다.
+        if(true) {
+            var name = '홍길동';    // if문은 단순 block이었기 때문에 전역변수로 친다.
+        }
+        console.log(name);  // 따라서 콘솔에 출력된다.
+
+        function foo() {
+            var num = 100;  // 함수 안에 선언해야지만 지역변수로 본다.
+
+            if(true) {
+                var k = 200;
+            }
+            console.log("k = " + k);    // if문 바깥이라도 괜찮음.
+        }
+
+        foo();
+        // console.log(num);   // 정의되지 않았다고 뜬다.
+        // 에러 떠버리면 하위가 실행되지 않으므로 꼭 주석처리 해줄 것.
+
+       for(var i=0; i<10; i++) {
+           console.log(i);  //10
+       } 
+       console.log(i);
+
+    </script>
+
+
+
+    <h2>hoisting</h2>
+
+    <p>var 키워드를 통해 선언된 변수는 각 script 태그별로 끌어올려진다. (hoisting)</p>
+
+    <script>
+        
+        // var x;   선언하지 않았음에도 밑에 변수선언이 있기 때문에 hoisting 처리.
+        console.log("x = " + x);    // x = undefined    - 덕분에 오류가 아니라 undefined
+        var x = 100;
+        x = 100;
+
+        console.log("x = " + x);    // x = 100
+    
+
+        bar();              // 역시 호이스팅 되어서 출력된다.   
+        function bar() {
+            console.log("bar 호출!");       // 이 내용이 잘 나온다. (펑션 내부는 그냥 나옴)
+        }
+
+
+    </script>
+
+
+
+
+</body>
+</html>

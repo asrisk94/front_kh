@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test</title>
+    <link rel="stylesheet" href="resources/css/main.css">
+
+    <style>
+
+        #main {
+            height: 1100px;
+            width: 800px;
+            border: 3px solid black;
+        }
+
+        header {
+            height: 320px;
+            margin-top: 0;
+        }
+        header h1 {
+            font-size: 50px;
+            padding-left: 20px;
+            padding-top: 10px;
+            margin: 0;
+        }
+        header ul {
+            padding-top: 20px;
+            padding-left: 60px;
+        }
+        header li {
+            font-size: 30px;
+        }
+        header a {
+            text-decoration: none;
+            color: black;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div id="top-menu">
+        <h2>서브 메뉴가 펼쳐지는 네비게이션 만들기</h2>
+        <hr>
+        <ul id="navi">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">웹개발</a>
+                <ul>
+                    <li><a href="#">웹디자인</a></li>
+                    <li><a href="#">HTML5 + CSS3</a></li>
+                    <li><a href="#">JQuery</a></li>
+                    <li><a href="#">웹 + 모바일</a></li>
+                </ul>
+            </li>
+            <li><a href="#">게시판</a>
+                <ul>
+                    <li><a href="#">Q & A</a></li>
+                    <li><a href="#">방명록</a></li>
+                </ul>
+            </li>
+            <li><a href="views/test/productForm.html">상품주문서</a></li>
+        </ul>
+    </div>
+
+
+    <div id="main">
+
+        <header>
+            <h1><strong>HTML5 & CSS3</strong></h1>
+    
+            <nav>
+                <ul>
+                    <li><a href="#">HTML5</a></li>
+                    <li><a href="#">CSS3</a></li>
+                    <li><a href="#">JAVASCRIPT</a></li>
+                    <li><a href="#">JQUERY</a></li>
+                    <li><a href="#">HTML5 API</a></li>
+                </ul>
+                
+            </nav>
+    
+        </header>
+        
+        <hr>
+        
+        <section>
+    
+            <h3>이 영역은 소제목과 내용으로 구분되는 영역입니다.</h3>
+    
+            <article>
+                <img src="images/flower1.jpg" alt="">
+            </article>
+    
+            <h3>section 안에 article 안에 img태그를 사용하였습니다.</h3>
+        </section>
+    
+        <hr>
+    
+        <footer>
+            <h2>이 문서는 HTML5를 기준으로 작성되었습니다.</h2>
+            <h2>이 영역은 FOOTER 영역입니다.</h2>
+        </footer>
+
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!doctype html>
+
+<html lang="ko">
+ <head>
+  <meta charset="UTF-8">
+  <title>폴라로이드 느낌 사진만들기</title>
+
+  <style>
+
+    .rotate {
+      width: 310px;
+      height: 250px;
+      /* h-offset(가로 시작위치) v-offset(세로 시작위치) blur(번짐) spread(그림자크기) 그림자색 */
+      box-shadow: 2px 2px 5px 1px gray;
+      margin-top: 100px;
+      margin-left: 150px;
+      margin-right: 100px;
+      margin-bottom: 100px;
+      text-align: center;
+      position: relative;
+
+      overflow: hidden;
+
+      transition-duration: 0.5s;
+    }
+
+    .rotate img {
+      padding: 5px;
+    }
+
+    .rotate > .caption {
+      width: 200px;
+      height: 15px;
+      position: relative;
+      text-align: left;
+      margin-top: 3px;
+      margin-left: 320px;
+      transition-duration: 0.5s;
+
+    }
+
+
+
+    .rotate:hover {
+      transform: rotate(5deg);
+      background-color: rgb(211, 205, 205);
+    }
+    .rotate:hover .caption {
+
+      transform: translate(-300px, 0);      
+      transition-duration: 0.5s;
+
+
+      /* animation-name: my-keyframe;
+      animation-duration: 0.5s;
+      animation-fill-mode: forwards; */
+    }
+
+    @keyframes my-keyframe {
+
+            100% {
+                transform: translate(-300px, 0);
+                width: 200px;
+            }
+        }
+
+
+  </style>
+
+ </head>
+
+ <body>
+  <h2>폴라로이드 느낌의 사진 만들기</h2>
+  <hr>
+
+  <div class="polaroid rotate">
+  	<img src="river1.png" width="300" height="180"> 
+	  <p class="caption">여름이깊어가고있었다</p>
+  </div>
+
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+ </body>
+</html>

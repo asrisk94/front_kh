@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>event</title>
+    <script src="./js/jquery-3.5.1.js"></script>
+
+    <style>
+        .outer {
+          width: 200px;
+          height: 200px;
+          background-color: orange;
+          padding: 50px;
+          margin: 10px auto;
+        }
+        .inner {
+          width: 100%;
+          height: 100%;
+          background-color: orangered;
+        }
+        </style>
+
+</head>
+<body>
+    <h1>event</h1>
+
+    <h2>mouse 관련</h2>
+    <div class="outer">
+        <div class="inner">
+
+        </div>
+    </div>
+
+    <input type="button" value="mouseenter | mouseleave" id="btn1">
+    <input type="button" value="mouseover | mouseout" id="btn2">
+    <input type="button" value="hover" id="btn3">
+
+    <script>
+
+        // hover
+        // mouseenter, mouseleave 이벤트핸들러를 동시에 바인딩하는 함수
+        $(btn3).click(function() {
+            $(".outer")
+                .hover(function() {
+                    // mouseenter
+                    // this는 이벤트 타겟객체. (호버 대상인 .아우터)
+                    $(this).css("border", "3px solid black");
+                }, function() {
+                    // mouseleave
+                    $(this).css("border", "none");
+                });
+        });
+
+
+
+        /**
+        *  mouseover | mouseout
+        *   자식 요소에 대해서도 event handling 한다. 
+        *   (이너에 가면 개별적으로 또 펑션이 일어난다)
+        */
+        $(btn2).click(function() {
+            $(".outer")
+                .mouseover(function() {
+                    console.log("mouseover");
+                })
+                .mouseout(function() {
+                    console.log("mouseout");
+                })
+        });
+
+
+
+        // mouseenter | mouseleave
+        // 자식 요소에 대해서 event handling 하지 않는다.
+        $(btn1).click(function() {
+            $(".outer")
+                .mouseenter(function() {
+                    console.log("mouseenter");
+                })
+                .mouseleave(function() {
+                    console.log("mouseleave");
+                })
+        });
+
+    </script>
+
+
+
+    <hr>
+
+    <h2>keyboard 관련</h2>
+
+    <input type="text" value="" id="userInput">
+
+    <script>
+
+        // keydown - keypress - keyup
+        $(userInput).keyup(function(e) {
+
+            console.log(e.key);     // 쓰는 문자가 그대로 나옴 Enter 이런식
+            console.log(e.keyCode); // 키코드에 맞게 바뀌어 숫자가 나옴
+
+            if(e.keyCode == 13) {
+                alert($(this).val());       // getter  (밸류 가져옴)
+                $(this).val('');            // setter
+            }
+        });
+    </script>
+
+
+
+    <hr>
+
+    <h2>submit 관련</h2>
+
+    <form action="javascript:alert('제출성공');" id="memoFrm">
+
+        <fieldset>
+            <legend>메모</legend>
+
+            <p><span id="counter">0</span>/50</p>
+            <textarea name="memo" id="memo" cols="30" rows="10"></textarea>
+            <br>
+            <input type="submit" value="제출">
+        </fieldset>
+
+    </form>
+    
+    <script>
+
+        // form submit 이벤트
+        // 그냥 웹페이지 전송 이전에 작업을 실행할 수 있음
+        // 유효성 검사
+        // 1. return false
+        // 2. event.preventDefault()  :  이벤트별 기본흐름을 중단
+        $("#memoFrm").submit(function() {
+            // alert("submit 이벤트");
+
+            // #memo 글자수 검사
+            var $memo = $(memo);
+            if($memo.val().length > 50) {
+                alert("글자수 초과입니다.");
+                return false;
+            }
+            return true;
+        });
+        
+
+
+        // 글자수 체크
+        $(memo).keyup(function() {
+            var $this = $(this);
+            var len = $this.val().length;
+            var $counter = $("span#counter");
+            
+            $counter
+                .html(len)
+            // html()이 innerHTML
+            // text()는 innerText
+
+            var $textLen = $("form").find("p, span");
+
+            if(len > 50) {
+                $textLen
+                    .css("color", "red");
+            }
+            else {
+                $textLen
+                    .css("color", "black");
+            }
+        });
+    </script>
+
+    <h2>on | off</h2>
+
+    <input type="button" value="실행" id="btn4">
+
+    <script>
+        // on('이벤트명', callbackFunction)     에드이벤트리스너와 비슷
+        // bind | unbind 가 있었으나, 이제 폐기되어 쓰지 않는다.
+        $(btn4).on('click', function() {
+            console.log("#btn4를 클릭하셨습니다.");
+            
+            // 이벤트 발생객체 this 또는 event.target
+            $(this).off('click');
+        });
+    </script>
+
+
+
+    <hr>
+
+    <h2>event bubbling을 이용해 on으로 처리하기</h2>
+
+    <div class="container">
+        <p>이벤트1</p>
+        <p>이벤트2</p>
+        <p>이벤트3</p>
+        <p>이벤트4</p>
+        <p>이벤트5</p>
+    </div>
+
+    <div class="wrapper">
+        <h2>안녕</h2>
+    </div>
+
+    <script>
+
+        var cnt = 0;
+        $(".wrapper").on('click', 'h2', function() {
+            var $wrapper = $(".wrapper");
+            $wrapper.append("<h2>안녕" + (++cnt) + "</h2>"); // 자식요소로 맨 밑에 추가. 기존요소 유지
+            // on절에서 h2를 뺀다면, 애초에 있었던 첫 h2에만 연결되었을 것
+        });
+
+        // p 클릭하면 container(부모)로 올라와서 이벤트 발생
+        // event bubbling
+        $(".container").on('click', 'p', function(e) {
+            console.log("클릭이벤트 발생");
+            console.log(this);  // 클릭된 대상 나옴
+        });
+    </script>
+
+
+
+    <hr>    
+
+    <h2>trigger</h2>
+
+    <div class="trg-container" style="border: 1px solid black;">
+        <h1>0</h1>
+    </div>
+    <input type="button" value="증가" id="btn5">
+
+    <script>
+        var cnt = 0;
+        $(".trg-container").click(function() {
+            $("h1", this)             // 기준이 될 부모요소를 두번째 인자로 전달. this(.trg-container) 하위의 h1 조회
+                .html(++cnt);
+        });
+        
+        $(btn5).click(function() {
+            // $(".trg-container")의 click event handler를 실행
+            $(".trg-container").trigger('click');
+        });
+
+    </script>
+
+
+
+
+</body>
+
+</html>

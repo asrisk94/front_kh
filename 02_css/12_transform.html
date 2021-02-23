@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>transform</title>
+</head>
+<body>
+    <h1>transform</h1>
+
+    <div class="wrapper">
+        <img src="sample/image/flower3.PNG" alt="">
+    </div>
+
+    <style>
+        .wrapper {
+            text-align: center;
+        }
+        .wrapper img {
+            width: 250px;
+        }
+
+
+
+        /* vendor prefix  ->  브라우저별 접두어 */
+        /* 최신 버전을 지원하지 않는 브라우저에 대한 속성 지원을 위해 접두사를 작성 */
+        /* ex) chrome, safari : -webkit-transform */
+
+        .wrapper img:hover {
+            /* 크롬, 사파리 */
+            -webkit-transform: translateX(10px);   
+            
+            /* 오페라 */
+            -o-transform: translateX(10px);        
+            
+            /* 모질라 파이어폭스 */
+            -moz-transform: translateX(10px);      
+            
+            /* ms IE */
+            -ms-transform: translateX(10px);       
+            
+            /* 마지막에 표준 작성 */
+            transform: translateX(10px);           
+        }
+
+        .wrapper img:hover {
+            width: 350px;   /* 이렇게 해도 호버시 변환은 되긴 된다. */
+
+            /* transform은 기본적으로 변환하는 함수(?) 적용 자체를 의미 */
+            /* transform: translate(-50px, 100px);   x, y좌표 추가하는 것.(예시에서는 좌로 50px, 아래로 100px 이동) */
+            /* transform: scale(2,2);   이러면 가로세로 2배씩 커짐 */
+            /* transform: rotate(-10deg);   이미지 각도 돌리기 (deg: 1도) */
+        }
+
+    </style>
+
+</body>
+</html>

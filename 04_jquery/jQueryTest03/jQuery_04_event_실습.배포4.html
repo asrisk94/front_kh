@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="../js/jquery-3.5.1.js"></script> 
+
+</head>
+<body>
+    <h2>Event 3</h2>
+
+    <script>
+
+        $(document).ready(function(){
+
+            var $tr = $("#event3").find("tr");
+
+            $tr.each(function(i, elem) {
+
+                var $elem = $(elem);
+
+                $elem.on("click", function() {
+
+                    var span1 = document.querySelector("#s1");
+                    var span2 = document.querySelector("#s2");
+                    var span3 = document.querySelector("#s3");
+                    var span4 = document.querySelector("#s4");
+    
+                    var $span = $([span1, span2, span3, span4]);
+                    var $td = $($elem.children());
+
+                    for(var idx in $td) {
+                        var txt = $td.eq(idx).text();
+                        $span.eq(idx).text(txt);
+                    }
+
+                    // 이 문제에서 추가된 부분
+                    $tr.children().css("backgroundColor", "white");
+                    $td.css("backgroundColor", "red");
+                });
+
+            });
+        });
+
+    </script>
+
+    <table id="event3" border="1">
+        <tr><th>번호</th><th>제목</th><th>조회수</th><th>작성일자</th></tr>
+        <tr><td>3</td><td>3번제목</td><td>0</td><td>11-07-13</td></tr>
+        <tr><td>2</td><td>2번제목</td><td>0</td><td>11-07-12</td></tr>
+        <tr><td>1</td><td>1번제목</td><td>0</td><td>11-07-11</td></tr>
+    </table>
+        선택된 행 :
+        <span id="s1"></span> / <span id="s2"></span>
+        / <span id="s3"></span> / <span id="s4"></span>
+
+</body>
+</html>

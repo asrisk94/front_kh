@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API</title>
+</head>
+
+<body>
+    <h1>String</h1>
+
+    <input type="button" value="실행" onclick="test1();">
+
+    <script>
+        function test1() {
+
+            // js에서 '', ""로 감싸진 literal은 string객체이다.
+            var str = "Apple Samsung LG";
+            console.log("length = " + str.length);
+            console.log("UpperCase/LowerCase : " + str.toUpperCase() + " | " + str.toLowerCase());
+
+            console.log("indexOf : " + str.indexOf("un"));  // 인덱싱. 없으면 -1
+            console.log("charAt : " + str.charAt(10));      // charAt 지원
+
+
+
+            // 문자열 일부 가져오기
+            // 1. substring(startIndex, endIndex)
+            console.log("substring : " + str.substring(6, 13));     // Samsung
+
+            // 2. substr(startIndex, length)
+            console.log("substr : " + str.substr(6, 7));         // Samsung 
+            console.log("substr : " + str.substr(6));           // Samsung LG
+
+
+
+            // csv 토큰처리
+            var csv = "사과, 바나나, 복숭아, 키위";
+            var arr = csv.split(",");
+            console.log(arr);
+
+            for(var i=0; i<arr.length; i++) {
+                console.log(arr[i]);
+            }
+
+
+
+            // 사용자에게 영문이름을 입력받고(prompt), a문자의 개수를 출력하세요.
+            // sinsaimdang -> a가 2개입니다.
+            // sejong -> a가 0개입니다.
+
+            // EngName();
+        }
+        
+
+
+        function EngName() {
+            
+
+            while(true) {
+                var name = prompt("영문이름을 입력하세요.");
+
+                if(name == null) {
+                    alert("취소하셨습니다.");
+                    break;
+                }
+                else if(name == '') {
+                    alert("입력해");
+                }
+                else {
+
+                    var flag = false;
+
+                    // charCodeAt()     - 아스키코드로 변환해주는 함수.
+                    // 자바 자동형변환 같은거 없기 때문에 'a' 이런거 아니고 숫자로 작업해야 한다.
+                    for(var i=0; i<name.length; i++) {
+                        if(name.charCodeAt(i) >= 65 && name.charCodeAt(i) <= 90) {
+                        }
+                        else if(name.charCodeAt(i) >= 97 && name.charCodeAt(i) <= 122) { 
+                        }
+                        else {
+                            alert("영문이 아닌 입력이 포함되어있습니다.");
+                            var flag = true;
+                            break;
+                        }
+                    }
+                    // 대소문자 구분 없이 찾으려면 toUpperCase, toLowerCase 중에 선택해서 쓰면 된다.
+
+                    if(!flag) {
+                        var cnt = 0;
+                        for(var i=0; i<name.length; i++) {
+                            if(name.charAt(i)=='a') {
+                                cnt++;
+                            }
+                        }
+                        console.log("a의 갯수 : " + cnt);
+                        break;
+                    }
+                }
+            }
+        }
+
+    </script>
+
+
+    <h1>Math</h1>
+
+    <input type="button" value="math 실행" onclick="test2();">
+
+    <script>
+        function test2() {
+            var num = 123.456;
+            console.log("올림 : " + Math.ceil(num));
+            console.log("내림 : " + Math.floor(num));
+
+            var num2 = 123.666;
+            console.log("num 반올림 : " + Math.round(num));
+            console.log("num2 반올림 : " + Math.round(num2));
+            
+            console.log("num 소수 3번째 자리에서 반올림 : " + (Math.round(num*100)/100));
+            
+            console.log("난수 : " + Math.random());     // 0.0(포함) ~ 1.0(미포함) 난수
+            console.log("난수 : " + ((Math.round(Math.random()*100))+1));     // 1 ~ 100 난수
+            
+        }
+    </script>
+
+    <p>@실습문제 : 순서있는 리스트요소 100개에 각각 1~100사이의 난수를 대입하고, 
+        <br> 짝수태그에만 배경색 지정하세요. </p>
+
+    <input type="button" value="수학버튼" onclick="test3();">
+
+    <ol id="test-random">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ol>
+
+
+    <script>
+
+        function test3() {
+
+            var liArr = document.querySelectorAll("#test-random li");
+            
+            for(var i=0; i<liArr.length; i++) {
+                liArr[i].innerHTML = Math.ceil(Math.random()*100);
+                liArr[i].style.backgroundColor = 'white';
+
+                if(liArr[i].innerHTML%2 == 0) {
+                    liArr[i].style.backgroundColor = 'skyblue';
+                }
+            }
+        }
+        
+    </script>
+
+
+    <h1>Date</h1>
+
+    <input type="button" value="date 실행" onclick="test4();">
+
+    <script>
+        function test4() {
+            // 날짜 시간관리 객체
+
+            var now = new Date();   // 현재시간 정보
+            console.log(now);
+        
+            var date1 = new Date("2020/10/28");     // 전달하지 않은 부분은 0으로 세팅.
+            console.log(date1);
+        
+            var date2 = new Date(2020, 9, 28, 20, 20);  // 달은 0~11 인덱스로 처리
+            console.log(date2);
+
+            dateFormat(now);
+        }
+
+        function dateFormat(d) {
+
+            // 2021/01/18(월) 14:00
+
+            var s = d.getFullYear() + "/" + (d.getMonth()+1).toString().padStart(2, "0") + "/" + make2digit(d.getDate());
+            console.log(s);                 // padStart(2, "0")은 2자리가 되는지 보고 빈 칸이 있으면 시작자리부터 0으로 채우란 소리
+        
+            // getDay   -   일:0 ~ 토:6
+            var dayOfWeek = ['일', '월', '화', '수', '목', '금', '토'];
+            s += "(" + dayOfWeek[d.getDay()] + ")";     // 요일     (월)
+            s+= " " + make2digit(d.getHours()) + ":" + make2digit(d.getMinutes());    // 시간     2칸 단위
+
+            console.log(s);
+
+        }
+
+        function make2digit(n) {
+            return n<10 ? "0" + n : n;
+        }
+
+    </script>
+
+
+
+    <input type="button" value="시간차 구하기" onclick="test5();">
+    <input type="button" value="실행시간 구하기" onclick="test6(foo);">
+
+    <script>
+        function test5() {
+            // 밀리초단위로 환산 후 차이를 구하고, 다시 초/분/시/일 단위로 변환
+
+            var start = new Date(2020, 9, 28);
+            var now = new Date();
+
+            var a = start.getTime(); // 밀리초 1970년 1월 1일 자정이후로 누적된 밀리초 반환
+            var b = now.getTime();
+        
+            var diff = Math.floor((b-a)/1000/60/60/24);
+            alert("개강한지 " + diff + "일 지났습니다.");
+        }
+
+        // javascript에서 함수는 값(매개인자)처럼 취급.
+        function test6(f) {
+
+            var start = new Date().getTime();
+            f();
+            var end = new Date().getTime();
+            var diff = end - start;
+            console.log(diff + "ms 걸렸습니다.");
+        }
+
+        function foo() {
+            for(var i=0; i<1000; i++) {
+                console.log(i);
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>

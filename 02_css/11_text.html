@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>text</title>
+</head>
+<body>
+
+    <h1>text</h1>
+
+    <div class="wrapper">
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequuntur necessitatibus similique, nihil harum molestias perspiciatis consectetur beatae quas dolor autem itaque reiciendis porro facilis sed odio ea asperiores nam quis?</p>
+        <p>Perspiciatis beatae reprehenderit totam ea fugiat temporibus, dolores dolor mollitia, soluta hic fugit animi officiis ut! Sit alias quaerat neque excepturi provident voluptatibus voluptate distinctio, eos aliquid? Expedita, saepe asperiores!</p>
+        <p>Hic, porro! Iusto, voluptatem! Hic voluptatem porro optio dolores, suscipit laudantium dignissimos vitae expedita, aliquid reprehenderit in perspiciatis? Reiciendis ratione blanditiis eos? Omnis voluptatum fugit necessitatibus ratione nisi itaque. Quisquam.</p>
+        <p>Tenetur totam excepturi provident recusandae quisquam accusantium odio aliquid alias aut? Assumenda consequuntur, quod cumque vitae porro ipsa dolorem natus reiciendis aliquid quidem nisi aspernatur adipisci est temporibus consectetur animi.</p>
+        <p>In assumenda harum corporis voluptates molestias sint velit temporibus doloribus! Quae nesciunt voluptates ullam explicabo quas rem obcaecati nisi? Ad repudiandae beatae vel magnam maxime ullam nisi, repellendus ipsam! Fuga?</p>
+    </div>
+
+    <style>
+        .wrapper p::first-letter {
+            font-size: 2em;
+            /* 첫 글자 크기만 바꿔줄 수 있다. (first-line 등도 있다.) */
+        }
+
+        .wrapper {
+            counter-reset: num; /* 카운터 변수 */
+        }
+
+        .wrapper p::before {
+            counter-increment: num; /* 이 변수를 증가시켜주세요. */
+            content: counter(num) ". ";
+            /* p가 시작되기 전마다 넘 변수를 증가시켜서 써주고 .을 찍어준다.  */
+
+            /* content:에서 홑따옴표를 찍고 사이에 이모티콘 넣으면 들어감. */
+        }  
+        .wrapper p::after {
+            content: '이모티콘 자리';
+            /* 이미지 끼워넣기 (애프터니까 뒤에 들어간다.) */
+        }
+
+        .wrapper p::selection {
+            background-color: hotpink;
+            color: white;
+            /* 드래그시에 색 바뀜 */
+
+        }
+
+        .wrapper p {
+            line-height: 30px;
+            /* 줄간격 */
+        }
+
+
+
+    </style>
+
+
+</body>
+</html>

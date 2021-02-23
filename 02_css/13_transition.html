@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>transition</title>
+</head>
+<body>
+    <h1>transition</h1>
+
+    <div class="test"></div>
+
+    <style>
+        .test {
+            width: 100px;
+            height: 100px;
+            background-color: teal;
+            border: 1px solid teal;
+            transition-duration: .5s; /* transform 일어나는 시간 지정 */
+            transition-property: transform;
+            /* property -> 트랜지션 대상 지정.
+            기본값은 all이라 어떠한 변화던지 대상이 된다.
+            지금처럼 transform만 대상으로 할 경우, 위드 헤이트 변화는 한번에 가고
+            트랜스폼 50px 이동만 transition 대상으로 0.5초에 걸쳐 일어난다. */
+
+            transition-delay: 0.5s;
+            /* 트랜지션은 호버하고 0.5초 뒤에 시작 */
+        }
+
+        .test:hover {
+            width: 200px;
+            height: 200px;
+            transform: translate(50px, 0) rotate(90deg);
+        }
+
+    </style>
+
+    <hr>
+
+
+
+    <h1>Animation</h1>
+
+    <div class="animation"></div>
+
+    <style>
+        .animation {
+            width: 100px;
+            height: 100px;
+            background-color: hotpink;
+            border: 3px solid gray;
+
+        }
+
+        .animation:hover {
+            animation-name: my-keyframe;
+            animation-duration: 5s;   /* 총 5초에 걸쳐 일어남. */
+
+            animation-direction: alternate; /* 리버스 사이클 가져간다는 의미 */
+            /* animation-iteration-count: 2; */
+            /* 2번 이동. (1번 왕복) */
+            /* 카운트를 infinite 줄 경우 무한 반복 */
+        }
+
+        @keyframes my-keyframe {
+            25% {
+                transform: translate(100px, 0); /* 항상 기본상태 기준으로 작성 */
+
+            }
+
+            50% {
+                transform: translate(100px, 100px) rotate(360deg);
+            }
+
+            75% {
+                transform: translate(0, 100px);
+            }
+
+            100% {
+                transform: translate(0, 200px);
+                background-color: lemonchiffon;
+                /* 색상도 0~100퍼가 될수록 점점 맞춰짐 */
+            }
+        }
+
+    </style>
+
+
+
+
+
+</body>
+</html>

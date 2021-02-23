@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <p>
+        @실습문제:
+        "Naver" - http://naver.com
+        "Google" - http://google.com
+        "KH정보교육원" - http://iei.or.kr
+        위 정보를 객체로 관리할 것. url이라는 사용자 속성을 생성할것.
+        <!-- <input type="button" value="Naver" url="http://naver.com"> -->
+
+        실행버튼을 클릭하면, div.btn-container하위에 버튼3개를 동적으로 생성.
+        생성된 각버튼을 클릭하면, 해당 url로 이동할 것.
+    </p>
+
+    <input type="button" value="실행" onclick="test1(event);">
+    <div class="btn-container"></div>
+
+    <script>
+        function test1(e){
+            //1.객체배열로 정보 관리
+            var arr = [
+            new Link("Naver", "http://naver.com"),
+            new Link("Google", "http://google.com"),
+            new Link("KH정보교육원", "http://iei.or.kr")
+            ];
+
+            //2.각 정보를 바탕으로 div.btn-container에 동적추가
+            var container = document.querySelector(".btn-container");
+            for(var i in arr){
+                
+                var tag = document.createElement("input");
+                tag.type = "button";
+                tag.value = arr[i].name;
+                tag.setAttribute("url", arr[i].url);
+                tag.setAttribute("onclick", "goToUrl(event)");
+
+                console.log(tag);
+
+                var div = document.querySelector(".btn-container");
+
+                div.appendChild(tag);
+            }
+
+            //3. 1회이용후 핸들러 제거
+            e.target.onclick = null;
+        }
+
+        function Link(name, url){
+            this.name = name;
+            this.url = url;
+        }
+
+        /**
+         * 생성버튼에 대한 이벤트 핸들러 
+         * 사용자정의 속성을 가져올때는 getAttribute("속성명")을 사용!
+         */ 
+        function goToUrl(e){
+            //1.버튼의 url속성
+            // var btn = this;//인라인속성으로 핸들러를 호출한 경우 this는 이벤트타켓이 아님.
+            var btn = e.target;
+            
+            // console.dir(btn);
+            // console.log(btn.url);
+
+            var url = btn.getAttribute("url");
+            console.log(url);
+
+            //2.location.href속성을 통한 페이지이동
+            location.href = url;
+
+        }
+    </script>
+
+</body>
+</html>

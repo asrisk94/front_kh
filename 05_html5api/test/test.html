@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ajaxTest</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <!-- <script src="../js/kakao.min.js"></script> -->
+    <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+
+    <!-- <script>
+        $.ajax({
+            type : 'GET',
+            url : "/oauth/authorize?client_id={REST_API_KEY}&redirect_uri={REDIRECT_URI}&response_type=code HTTP/1.1",
+            Host: "kauth.kakao.com",
+            data : request,
+            error : function(error) {
+                alert("Error!");
+            },
+            success : function(response) {
+                console.log(response);
+                alert("success!");
+            },
+            complete : function() {
+                alert("complete!");
+            }
+        });
+    </script> -->
+
+</head>
+
+<body>
+
+    <a id="kakao-login-btn"></a>
+    <a href="http://developers.kakao.com/logout">Logout</a>
+    <script type='text/javascript'>
+        //<![CDATA[
+        // 사용할 앱의 JavaScript 키를 설정해 주세요.
+        Kakao.init('ca28d3fb04603a5867d3fadb8e02c3a0');
+        // 카카오 로그인 버튼을 생성합니다.
+        Kakao.Auth.createLoginButton({
+            container: '#kakao-login-btn',
+            success: function (authObj) {
+                alert(JSON.stringify(authObj));
+            },
+            fail: function (err) {
+                alert(JSON.stringify(err));
+            }
+        });
+      //]]>
+    </script>
+
+</body>
+</html>

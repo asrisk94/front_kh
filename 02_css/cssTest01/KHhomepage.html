@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KH</title>
+
+    <style>
+
+        body {
+            width: 100%;
+            height: 100%;
+        }
+
+        header {
+            background-color: white;
+            height: 200px;
+        }
+
+        header .title {
+            width: calc(100% - 300px);
+            height: 160px;
+            float: left;
+        }
+        header img {
+            height: 180px;
+            margin: auto auto;
+            float: left;
+        }
+        header h1 {
+            text-align: center;
+            margin: 60px;
+            font-size: 50px;
+        }
+
+        header .loginform {
+            margin: 25px 15px 0 0;
+            width: 270px;
+            height: 130px;
+            float: right;
+        }
+        header .loginform td {
+            padding: 3px;
+        }
+
+        header .login-label  {
+            font-size: 20px;
+        }
+        header #login, #password {
+            height: 20px;
+        }
+        header #login-btn {
+            width: 60px;
+            height: 30px;
+        }
+        header #reset-btn {
+            width: 50px;
+            height: 30px;
+        }
+
+
+        header .menu {
+            clear: both;
+            width: 1200px;
+            height: 30px;
+            margin: 0 auto;
+        }
+        header #menu-nav {
+            width: 100%;
+            height: 100%;
+        }
+        #menu {
+            list-style: none; /* 불릿 제거 (동그라미) */
+            padding-left: 0;  /* 왼쪽으로 딱 붙임. 마진이 아니라 패딩. */
+            width: 1200px;
+            margin: 0 auto;
+        }
+        #menu li {
+            font-size: 20px;
+            float: left; /* 가로배치 */
+            margin-right: 50px;
+            margin-left: 50px;
+            padding: 3px 10px;
+        }
+
+
+
+        section {
+            background-color: gray;
+            height:1000px;
+            
+        }
+        section p {
+            margin: 0;
+            font-size: 30px;
+        }
+
+        footer {
+            background-color:skyblue;
+            height: 150px;
+        }
+        footer h3 {
+            margin: 0;
+            padding: 60px;
+            text-align: center;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <header>
+        
+        <div class="title">
+            <img src="resources/img/kh.jpg" alt="">
+            <h1><Strong>My Main</Strong></h1>
+        </div>
+
+        <div class="loginform">
+            <form>
+                <table>
+                    <tr>
+                        <td><label for="login" class="login-label">로그인</label></td>
+                        <td><input type="text" id="login" name="login"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="password" class="login-label">비밀번호</label></td>
+                        <td><input type="password" id="password" name="password"></td>
+                    </tr>
+                </table>
+                <input type="submit" value="로그인" id="login-btn">
+                <input type="reset" value="취소" id="reset-btn">
+            </form>      
+        </div>
+
+        <div class="menu">
+            <nav id="menu-nav">
+                <ul id="menu">
+                    <li><a href="#">메인</a></li>
+                    <li><a href="#">공지사항</a></li>
+                    <li><a href="#">자유게시판</a></li>
+                    <li><a href="#">갤러리</a></li>
+                    <li><a href="#">회원관리</a></li>
+                    <li><a href="#">채팅하기</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+
+    <section>
+        <p>content 내용</p>
+    </section>
+    
+    <footer>
+        <h3>Copyright &copy; 1998-2019 KH information Educational Institute All Right Reserved</h3>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>table</title>
+</head>
+<body>
+    <h2>table</h2>
+
+    <table>  <!--border = 경계선타입. 요샌 잘 안씀-->
+
+        <thead>
+            <tr>
+                <th>브라우저명</th>
+                <th>제조사</th>
+                <th>홈페이지</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            <tr>
+                <td>Chrome</td>
+            <td>Google</td>
+            <td><a href="https://google.com">https://google.com</a></td>
+            </tr>
+            <tr>
+                <td>Edgd</td>
+                <td>MicroSoft</td>
+                <td><a href="https://microsoft.com">https://microsoft.com</a></td>
+            </tr>
+            <tr>
+                <td>Safari</td>
+                <td>Apple</td>
+                <td><a href="https://apple.com">https://apple.com</a></td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="3">총 브라우저 수 : 3개</td>  <!-- colspan은 열 갯수를 몇 개를 합치는지 의미. (3칸을 다 합쳐서 씀)-->
+            </tr>
+        </tfoot>
+    </table>
+
+    <style>
+        table {
+            border: 1px solid black;
+            border-collapse: collapse;
+            /* 보더콜랩스 기본값은 separate이다. collapse하면 사이를 없애준다. */
+            width: 500px;
+            height: 300px;
+        }
+
+        th, td {
+            border: 1px solid black;
+            text-align: center;
+            /* 텍 얼라인은 테이블에 주던 셀에 주던 둘다 먹는다. */
+            vertical-align: bottom;
+            /* 수직 정렬 (테이블 셀만의 특징) */
+            padding: 10px 0;
+            /* 어떻게 구현되는지 껏다 키면서 잘 보자 */
+        }
+    </style>
+
+    <hr>
+
+
+
+    <h2>table이 아닌 요소의 수직정렬</h2>
+
+    <div class="test">
+        <span>안녕</span>
+    </div>
+
+    <style>
+        .test {
+            width: 100px;
+            height: 100px;
+            background-color: greenyellow;
+            margin: 10px auto;
+            text-align: center;
+            display: table;
+            /* 테이블인척 바꿔줌 */
+        }
+
+        .test span {
+            display: table-cell;
+            /* 테이블 셀인척 바꿔줌. */
+            vertical-align: middle;
+            /* 테이블인척 해줘야 버티컬 얼라인 사용 가능 */
+        }
+
+    </style>
+
+</body>
+</html>

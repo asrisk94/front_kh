@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>filter</title>
+    <script src="js/jquery-3.5.1.js"></script>
+
+</head>
+<body>
+    <h1>filter</h1>
+
+    <div class="wrap">
+        <p class="test">테스트1</p>
+        <p class="test">테스트2</p>
+        <p class="test">테스트3</p>
+        <p>테스트4</p>
+        <p class="test">테스트5</p>
+    </div>
+
+    <input type="button" value="실행1" id="btn1">
+    <input type="button" value="first()" id="btn2">
+    <input type="button" value="last()" id="btn3">
+    <input type="button" value="eq(index)" id="btn4">
+    <input type="button" value="not(selector)" id="btn5">
+
+    <script>
+
+        /**
+         *  eq(index)
+         *      0-based index
+         */
+
+        $(btn5).click(function() {
+            $(".wrap p")
+                .not(".test")
+                .css({
+                    "color" : "lightsalmon",
+                    "font-size" : "1.5em"
+                });
+        });
+
+        $(btn4).click(function() {
+            $(".wrap p")
+                .eq(3)
+                .css({
+                    "color" : "seagreen",
+                    "font-size" : "1.5em"
+                });
+        });
+
+        $(btn3).click(function() {
+            $(".wrap p")
+                .last()
+                .css({
+                    "color" : "springgreen",
+                    "font-size" : "1.5em"
+                });
+        });
+
+        $(btn2).click(function() {
+            $(".wrap p")
+                .first()
+                .css({
+                    "color" : "hotpink",
+                    "font-size" : "1.5em"
+                });
+        });
+
+
+
+        /**
+         *  filter(선택자)
+         *  괄호 안에 해당인 것만 걸러낸다.
+         */
+        $(btn1).click(function() {
+            // $(".wrap p")
+            //     .filter(":even")
+            //     .css("color", "hotpink");
+            
+            var $p = $(".wrap p");
+
+            // $p 하위의 .test 요소만
+            // $p
+            //     .filter(".test")
+            //     .css("background-color", "skyblue");
+            
+
+            // $p 하위의 .test가 아닌 요소만
+            // $p
+            //     .filter("p:not(.test)")
+            //     .css("background-color", "red");
+
+            $p.filter(function(index, elem) {
+                return index%2 != 0;    // 이러면 홀수 인덱스만 리턴
+            }).css("color", "blue");
+
+        });
+    </script>
+
+</body>
+</html>

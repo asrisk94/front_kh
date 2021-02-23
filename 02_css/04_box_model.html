@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>box_model</title>
+</head>
+<body>
+    <div class="wrapper">
+        <h1>Box Model</h1>
+        <img src="sample/박스모델속성.png" alt="" style="width: 500px;">
+    </div>
+    <div class="test">내용내용내용</div>
+
+    <!-- 이미지 정렬은 div에 클래스 값을 줘서 style에서 선택해도 되고,
+    해당 페이지 자체가 정렬 대상이라면 그냥 body를 선택해서 정렬해도 된다. -->
+
+    <style>
+        .wrapper {
+            text-align: center;
+            margin-bottom: 10px;
+            /* 래퍼는 밑에 50떨어지라 하고, test는 위로 10 떨어지라 한다.
+               이러면 큰 값에 맞춰진다. (50 떨어짐)  -> 마진겹침현상 */
+        }
+
+        .test {
+            border : 1px solid black;
+            width: 300px;
+            height: 300px;
+            background-color: orangered;
+            padding: 10px 20px 30px 40px; /* top right bottom left */
+            margin: 50px 5px 10px 5px; /* 역시 top right bottom left */
+            /* margin: 0, auto는 위, 오른쪽만이네? -> 생략한 것은 맞은 편 값을 가져와 씀 */
+            /* margin: 0 -> 이러면 4방향의 값을 전부 참조 */
+        }
+        /* content, padding, border, margin 기억할 것 */
+
+    </style>
+
+    <hr>
+
+    <div class="border-test"></div>
+    <style>
+        .border-test {
+            width: 300px;
+            height: 300px;
+            background-color: sandybrown;
+            margin: 20px auto;
+            border: 2px solid black;
+            /*
+            border-width: 2px;
+            border-style: solid;
+            border-color: black;
+            이 세줄이나 위에 보더 한줄이나 똑같다.
+            */
+
+
+            /* 모서리 둥글게 만드는 정도 */
+            border-radius: 10px 20px 30px 40px; /* left-top right-top right-bottom left-bottom */
+            /* 50%를 주면 원이 나온다. */
+        }
+    </style>
+
+    <div class="box-shadow border-test">box-shadow</div>
+    <style>
+        .box-shadow {
+            /* h-offset(가로 시작위치) v-offset(세로 시작위치) blur(번짐) spread(그림자크기) 그림자색 */
+            box-shadow: 10px 10px 10px 5px green;
+        }
+
+    </style>
+
+    <br><br><br><br><br><br>
+
+</body>
+</html>

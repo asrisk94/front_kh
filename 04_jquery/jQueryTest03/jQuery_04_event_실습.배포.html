@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jQuery_04_event_실습</title>
+    <script type="text/javascript" src="../js/jquery-3.5.1.js"></script> 
+</head>
+<body>
+
+    <h2>Practice</h2>
+
+    <script>
+
+        $(function(){
+            var len = $("#number").children().length;
+            console.log("length : " + len);
+            $(document).on("mouseenter", "#number", function() {
+                $(this).children().each(function() {
+                    console.log($(this).attr("class"));
+                });
+            });
+
+		});
+    </script>
+
+    <ul id="number">
+        <li class="n1">1</li>
+        <li class="n2">2</li>
+        <li class="n3">3</li>
+    </ul>
+
+
+
+    <hr>
+
+    <h2>Event 1</h2>
+
+    <script>
+
+        $(document).ready(function(){
+
+            var $select = $(document.querySelector("[name=number]"));
+            
+            $select.on("input", function(i, elem) {
+
+                var $option = $("option:selected");
+                var $span = $("[id=selNum]");
+                $span.text('');
+                $span.text($option.val());
+            });
+
+        });
+
+    </script>
+    
+    <select name="number">
+        <option value="">== 선택 == </option>
+        <option value="1">1번</option>
+        <option value="2">2번</option>
+        <option value="3">3번</option>
+        <option value="4">4번</option>
+    </select>
+    <span id="selNum"></span>
+
+
+
+    <hr>
+
+    <h2>Event 2</h2>
+
+    <script>
+
+        $(document).ready(function(){
+
+            var $tr = $("#event2").find("tr");
+            
+            $tr.each(function(i, elem) {
+
+                var $elem = $(elem);
+
+                $elem.on("click", function() {
+
+                    var span1 = document.querySelector("#s1");
+                    var span2 = document.querySelector("#s2");
+                    var span3 = document.querySelector("#s3");
+                    var span4 = document.querySelector("#s4");
+    
+                    var $span = $([span1, span2, span3, span4]);
+                    var $td = $($elem.children());
+                    
+                    for(var idx in $td) {
+                        var txt = $td.eq(idx).text();
+                        $span.eq(idx).text(txt);
+                    }
+                });
+
+            });
+        });
+
+    </script>
+    
+    <table id="event2" border="1">
+        <tr><th>번호</th><th>제목</th><th>조회수</th><th>작성일자</th></tr>
+        <tr><td>3</td><td>3번제목</td><td>0</td><td>11-07-13</td></tr>
+        <tr><td>2</td><td>2번제목</td><td>0</td><td>11-07-12</td></tr>
+        <tr><td>1</td><td>1번제목</td><td>0</td><td>11-07-11</td></tr>
+    </table>
+        선택된 행 :
+        <span id="s1"></span> / <span id="s2"></span>
+        / <span id="s3"></span> / <span id="s4"></span>
+
+</body>
+
+</html>

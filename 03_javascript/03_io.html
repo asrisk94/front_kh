@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>io</title>
+</head>
+
+<body>
+    <h1>사용자입출력</h1>
+
+    <input type="button" value="경고창" onclick="alert('안녕');">
+    <input type="button" value="콘솔출력" onclick="console.log('Hello World');">
+    <input type="button" value="사용자확인" onclick="test1();">
+    <input type="button" value="사용자문자열입력" onclick="test2();">
+
+    <script>
+        function test1() {
+            // 사용자 확인이 필요한 경우
+            var bool = confirm("삭제하시겠습니까?");    // tf 메소드 (확인 취소 버튼 나옴)
+            console.log(bool);
+
+            if(bool) {
+                alert("파일을 삭제했습니다.");
+            }
+            else {
+                alert("파일삭제를 취소했습니다.");
+            }
+
+        }
+        function test2() {
+
+            while(true) {
+
+                var name = prompt("이름을 입력하세요.");
+                console.log(name);
+                // 취소버튼을 누른 경우
+                if(name==null) {
+                    alert("취소되었습니다.");
+                    break;
+                }
+                // 빈 문자열이 입력된 경우
+                else if(name== '') {
+                    alert("이름을 입력해주세요.");
+                }
+                // 정상적으로 입력된 경우
+                else {
+                    alert("이름이 입력되었습니다.");
+                    break;
+                }
+            }
+
+        }
+    </script>
+
+
+    <hr>
+
+    <h2>태그 컨텐츠 작성하기 | 가져오기</h2>
+
+    <input type="button" value="작성" onclick="test3();">
+    <input type="button" value="가져오기" onclick="test4();">
+
+    <hr>
+
+    <div class="area" id="result"></div>
+    <div class="area" id="another"></div>
+
+    <style>
+        .area {
+            width: 300px;
+            min-height: 200px;
+            border: 1px solid #000;
+            background-color: skyblue;
+            padding: 3px;
+            margin: 0 10px;
+        }
+    </style>
+
+    <script>
+
+        function test3() {
+
+            var txt = "<mark>눈</mark>이 왔습니다."
+
+            // innerText  -  제공된 문자열을 단순 텍스트로 처리. (html 태그 무시)
+            // result.innerText = txt;
+            
+            // innerHTML  -  제공된 문자열을 html 태그로 처리.
+            result.innerHTML = txt;
+
+            // getElement하지 않아도 result 바로 쓸 수 있음
+        }
+
+        function test4() {
+            //innerText  -  html태그 제외하고 컨텐츠를 가져온다.
+            // alert(result.innerText);
+
+            // innerHTML  -  html태그 포함해서 컨텐츠를 가져온다.
+            // alert(result.innerHTML);
+
+            // 내용만 뽑아다가 따로 담고 싶을 때
+            another.innerHTML = result.innerText;
+
+            console.dir(result);
+        }
+    </script>
+
+</body>
+</html>

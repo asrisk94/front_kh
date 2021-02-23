@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form02</title>
+</head>
+<body>
+    
+    <form>
+        <p>
+            <label for="customerName">고객명 : </label>
+            <input type="text" id="customerName" style="height: 10px;">
+        </p>
+        <p>
+            <label for="phone">전화번호(필수) : </label>
+            <input type="tel" id="phone" style="height: 10px;" required>
+        </p>
+        <p>
+            <label for="email">이메일 : </label>
+            <input type="email" id="email" style="height: 10px;">
+        </p>
+        <div>
+            <label for="pizzaMenu">피자선택(필수) : </label>
+            <select name="pizzaMenu" id="pizzaMenu" required>
+                <option value="" selected>피자를 선택하세요.</option>
+                <option value="combination-pizza">콤비네이션 피자</option>
+                <option value="bulgogi-pizza">불고기 피자</option>
+                <option value="cheeze-pizza">치즈 피자</option>
+                <option value="peperoni-pizza">페퍼로니 피자</option>
+            </select>
+        </div>
+
+        <fieldset>
+            <legend>피자 사이즈필수)</legend>
+
+            <div>
+                <p>
+                    <input type="radio" name="size" id="size-S">
+                    <label for="size-S">Small</label>
+                </p>
+                <p>
+                    <input type="radio" name="size" id="size-M">
+                    <label for="size-M">Midium</label>
+                </p>
+                <p>
+                    <input type="radio" name="size" id="size-L">
+                    <label for="size-L">Large</label>
+                </p>
+            </div>
+
+        </fieldset>
+
+        <fieldset>
+            <legend>토핑 선택</legend>
+
+            <div>
+                <p>
+                    <input type="radio" name="toping" id="toping-bacon">
+                    <label for="toping-bacon">베이컨</label>
+                </p>
+                <p>
+                    <input type="radio" name="toping" id="toping-cheeze">
+                    <label for="toping-cheeze">치즈</label>
+                </p>
+                <p>
+                    <input type="radio" name="toping" id="toping-onion">
+                    <label for="toping-onion">양파</label>
+                </p>
+                <p>
+                    <input type="radio" name="toping" id="toping-mushroom">
+                    <label for="toping-mushroom">버섯</label>
+                </p>
+            </div>
+
+        </fieldset>
+
+        <p>
+            <label for="time">희망 배송 시간 : </label>
+            <input type="time" name="time" id="time">
+        </p>
+        <p>
+            <label for="memo">배송시 요쳥사항 : </label>
+            <textarea name="memo" id="memo" cols="30" rows="4"></textarea>
+        </p>
+        
+        <input type="submit" value="주문하기">
+
+
+
+
+    </form>
+
+
+</body>
+</html>

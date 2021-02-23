@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>선택자 우선순위</title>
+</head>
+<body>
+    <h1>선택자 우선순위</h1>
+    <ol>
+        <li>!important</li>
+        <li>inline style속성 style="width:100px;"</li>
+        <li>아이디 선택자 #myid</li>
+        <li>클래스선택자 .test</li>
+        <li>계층선택자 div > p</li>
+        <li>태그선택자 p</li>
+        <li>모든선택자 *</li>
+        <li>가상선택자 :checked</li>
+        <li>속성 [type=text]</li>
+    </ol>
+
+
+    <!-- 태그 안에 직접 쓰인 인라인속성이 최우선, 
+        그 다음 아이디선택자, 클래스선택자, 태그선택자 순 우선순위. 
+        단, !important를 달아주면 해당 지시사항이 최우선이 된다. (예외)-->
+    <div id="mydiv" class="mycls" style="background:magenta;">우선순위 테스트</div>
+    <style>
+        #mydiv {
+            background: lightsalmon !important;
+        }
+
+        .mycls {
+            background: lightgreen;
+        }
+
+        div {
+            background: lightgray;
+        }
+    </style>
+
+</body>
+</html>

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form</title>
+</head>
+<body>
+    <h1>Form</h1>
+
+    <!--action : 제출할 서버측 url-->
+    <!-- method 전송방식   GET(사용자 입력값이 url에 노출)/ POST(노출되지 않음) -->
+    <form action="text" method="GET">
+        <!-- 라벨태그의 for는 그 아래 위치한 것들 중 맞는 id를 의미. 한 쌍으로 묶임-->
+        <label for="userName">아이디 : &nbsp;</label>
+        <input type="text" id="userName" name="user-name">
+        <!-- name은 서버 전송시 키값으로 사용됨.-->
+        <br>
+        <label for="password">비밀번호 : </label>
+        <input type="password" id="password" name="password">
+        <br>
+        <input type="submit" value="전송">
+    </form>
+
+
+    <hr>
+
+    <form action="">
+        <!-- fieldset 폼 하위에서 그룹핑할 수 있다. -->
+        <!-- legend : fieldset의 제목 지시  -->
+        <fieldset>
+            <legend>text관련 input태그</legend>
+            <input
+                type="text"
+                name="userId"
+                id="userId"
+                maxlength="10"
+                placeholder="아이디" 
+                value="honggd"
+                style="width:200px; height:30px;"
+            >
+                <!-- 홀더는 칸이 빈칸일 때 회색 워터마크로 채워놓는 효과 -->
+                <!-- readonly : 이걸 넣으면 값을 입력할 수 없게 됨 -->
+            <br>
+            <!-- input: password -->
+            <input type="password" name="password" id="password" placeholder="비밀번호">
+
+            <br>
+            <input type="search" name="search_keyword" id="search_keyword" placeholder="검색어를 입력해주세요.">
+            <!-- 타입 서치에서는 입력시에 엑스표도 나온다.-->
+
+            <br>
+            <input type="email" name="userEmail" id="userEmail" placeholder="이메일" required>
+            <!-- 이메일 타입에서는 @ 확인등 양식 지키기 위한 포멧 지원.-->
+
+            <br>
+            <input type="url" name="homepage" id="homepage" placeholder="홈페이지">
+
+            <br>
+            <input type="tel" name="userTel" id="userTel" placeholder="전화번호">
+
+            <br>
+            <textarea 
+                name="memo" id="memo" 
+                cols="30" rows="10" placeholder="메모"
+                style="resize : none;">사용자 입력값</textarea>
+            <!-- resize none은 크기조절 못하게 막아줌-->
+            
+        </fieldset>
+
+        <fieldset>
+            <legend>number관련 input태그</legend>
+            <input type="number" name="amount" id="amount"
+            placeholder="수량을 입력하세요"
+            max="10" min="0" step="2"
+            style="width:150px;"
+            >
+            <!-- 
+                박스안에 뜨는 갯수 올리고 내리는 화살표 : 스핀박스
+                1개가 아니라 2개씩 올리고 내리는 등의 조정 가능 : step
+            -->
+
+            <br>
+            <input 
+                type="range" name="point" id="point"
+                max="100" min="0" step="5"
+            >
+            <!-- 스크롤바-->
+        </fieldset>
+
+        <fieldset>
+            <legend>날짜시간관련 input태그</legend>
+            <input type="date" name="birthdaty" id="birthday" value="2000-01-01">
+            <br>
+            <input type="time" name="eta" id="eta" value="20:00">
+            <br>
+            <input type="datetime-local" name="reservation" id="reservation"
+                value="2000-01-01T21:30">
+            <!-- iso-8601에서 제시한 형식으로 value 작성 -->
+        </fieldset>
+
+        <input type="submit" value="제출">
+        <input type="reset" value="초기화">
+
+    </form>
+
+
+    <br><br>
+
+
+
+    <form>
+        <fieldset>
+            <legend>선택관련 input태그</legend>
+            <div>
+                <!-- 라디오버튼 (묶음)-->
+                성별 :
+                <input type="radio" name="gender" id="gender-m" value="male" checked>
+                <label for="gender-m">남</label>
+                <input type="radio" name="gender" id="gender-f" value="female">
+                <label for="gender-f">여</label>
+                <!-- name값이 같아야 같이 묶여서 하나만 선택하게 된다.-->
+                <!--checked는 기본 선택값 지정. 없어도 된다.-->
+            </div>
+
+            <div>
+                <label for="married">기혼여부 : </label>
+                <input type="checkbox" name="married" id="married">
+                <!-- 밸류속성 따로 주지 않았으므로 체크하면 on으로 넘겨질 것-->
+            </div>
+
+            <div>
+                <!-- 체크박스. 중복가능-->
+                취미 :
+                <input type="checkbox" name="hobby" id="hobby-music" value="music">
+                <label for="hobby-music">음악감상</label>
+                <input type="checkbox" name="hobby" id="hobby-movie" value="movie" checked>
+                <label for="hobby-movie">영화감상</label>
+                <input type="checkbox" name="hobby" id="hobby-game" value="game">
+                <label for="hobby-game">게임</label>
+            </div>
+
+            <div>
+                <!-- 드롭다운 선택창-->
+                <label for="size">사이즈 : </label>
+                <select name="size" id="size">
+                    <option value="S">스몰</option>
+                    <option value="M">미디움</option>
+                    <option value="L" selected>라지</option>
+                    <!-- 선택시에 해당 밸류값이 전송됨-->
+                    <!-- 라디오버튼과 체크박스가 체크드였다면, 여기서는 selected가 기본선택값-->
+                </select>
+            </div>
+
+        </fieldset>
+
+
+
+        <fieldset>
+            <legend>기타 input태그</legend>
+            <label for="color">컬러 : </label>
+            <input type="color" name="color" id="color" value="#00ff00"> <!-- 16진수값 표현-->
+            <!-- 뒤에 disabled를 붙이면 : 화면노출은 되지만, 값변경/서버전송 불가-->
+            <!-- 컬러뿐만 아니라 다른데에도 적용 가능-->
+
+            <br>
+            <input type="file" name="upload-file" id="upload-file">
+            <!-- 사용자의 파일 첨부 기능-->
+
+            <br>
+            <input type="hidden" name="num" value="1234567890">
+            <!-- 
+                화면노출없이 전송하기 위한 태그.
+                제출을 눌러보면 num=1234567890 이런 형태로 값이 넘어간다.
+            -->
+
+            <br>
+            <input type="button" value="버튼1">
+            <!-- type submit | reset 중 원하는 것 써 넣을것-->
+            <button type="button">버튼2</button>
+            <!-- button 태그의 기본타입은 submit이므로, 생략하고 테스트시 주의할 것 -->
+
+        </fieldset>
+
+        <input type="submit" value="제출">
+
+    </form>
+
+</body>
+</html>

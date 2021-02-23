@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jQuery_01_base_selector_실습</title>
+	<!--최신 jquery cdn 사용하기-->
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>    
+</head>
+<body>
+    <h1>jQuery_01_base_selector_실습</h1>
+    <h2>Selector1</h2>
+    <script>
+        $(document).ready(function(){
+            $("h1").css("color", "red");
+            $("#text").css("color", "orange");
+            $("[name=text]").css("color", "yellow");
+            $(".text").css("color", "green");
+		});
+    
+    </script>
+    <h1> text1 </h1>
+    <h1 id="text"> text2 </h1>
+    <h1 name="text"> text3 </h1>
+    <h1 class="text"> text4 </h1>
+
+        
+</body>
+</html>

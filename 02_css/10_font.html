@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>font</title>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap" rel="stylesheet">
+    <!-- 구글 웹폰트에서 링크 따옴 -->
+
+    <style>
+        /* 눈누의 경우 */
+        /* 눈누에서 받은 폰트페이스 붙이기 */
+
+        /* 스타일 적용 자체는 폰트-패밀리로 똑같이 하면 된다. */
+    </style>
+</head>
+<body>
+
+    <h1>font</h1>
+    <p>기본 폰트 크기 : 16px(절대값), 1em(상대값), 100%(상대값)</p>
+
+    <ul>
+        <li>
+            <p id="font1">가나다라마바사 abcdefg 1234567890</p>
+        </li>
+        <li>
+            <p id="font2">가나다라마바사 abcdefg 1234567890</p>
+        </li>
+        <li>
+            <p id="font3">가나다라마바사 abcdefg 1234567890</p>
+        </li>
+    </ul>
+
+    <style>
+        body {
+            font-family:'Times New Roman', Times, serif;
+            /* 혹시 바디에 폰트사이즈를 주면, 부모로부터 아래에 다 상속해주는 것이므로
+            절대값이 아닌 자식 폰트들은 다 기본값 기준이 바뀐다. */
+        }
+
+        #font1 {
+            font-family: "휴먼모음T", "궁서체";
+            /* 휴먼모음T가 있으면 그걸로 나오고, 없으면 궁서체 처리. 여러개 나열도 가능. */
+            font-size: 30px;
+  
+            font-weight: bold; /* 100~ 900 범위를 줘도 굵기 정도가 바뀐다.(폰트에서 준비가 되어있어야함) */
+            font-style: italic; /* 이탤릭체 표현할 때 사용. */
+            
+            /* font: italic 150% "궁서체";   이런식으로 폰트: 명령어를 쓰면 하나로 다 가능.
+            단, 쓰는 순서가 정해져 있다. 호버해서 확인하고 쓰자. */
+        }
+        #font2 {
+            font-family: 'Nunito', sans-serif;
+            /* 구글 웹폰트 링크 받아온 누니토 체 적용 */
+            font-size: 2em;
+            /* 기본값이 16px, 1em이므로 2em하면 두배인 32px 된다.(물론 기본값 바꾸면 바뀜) */
+        }
+        #font3 {
+            font-family: cursive;
+            font-size: 150%;
+            /* 기본값을 100%로 해서 150% 크기 적용 */
+        }
+
+    </style>
+
+
+
+
+
+
+</body>
+</html>

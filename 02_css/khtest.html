@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+
+    <style>
+
+        #box {
+            width: 450px;
+            height: 620px;
+            background-color: green;
+            border-radius: 20px 20px 20px 20px;
+        }
+
+        #entireform {
+            width: 400px;
+            height: 500px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        #entireform li {
+            padding: 9px;
+        }
+
+        .list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        #entireform .element {
+            width: 350px;
+            height: 40px;
+            margin: 1px;
+            background: whitesmoke;
+            filter:alpha(opacity=60);
+            border-radius: 15px 15px 15px 15px;
+            border: 5px;
+            border-color: white;
+        }
+
+        #entireform #btn {
+            background-color: black;
+            color: white;
+            width: 80px;
+            border-radius: 20px 20px 20px 20px;
+        }
+
+
+
+    </style>
+
+</head>
+<body>
+
+    <div id="box">
+
+        <form action="" id="entireform">
+
+            <fieldset>
+                <legend>Step 1: 로그인 정보</legend>
+    
+                <ol class="list">
+                    <div class="element">
+                        <li>
+                            <label for="id">아이디 </label>
+                            <input type="text" id="id" name="id">
+                        </li>
+                    </div>
+                    <div class="element">
+                        <li>
+                            <label for="password">비밀번호 </label>
+                            <input type="password" id="password" name="password">
+                        </li>
+                    </div>
+                    <div class="element">
+                        <li>
+                            <label for="passwordcheck">비밀번호 확인 </label>
+                            <input type="password" id="passwordcheck" name="passwordcheck">
+                        </li>
+                    </div>
+                    <div class="element">
+                        <li>
+                            <label for="grade">회원 등급 </label>
+                            <input type="text" id="grade" name="grade" placeholder="준회원">
+                        </li>
+                    </div>
+                </ol>
+    
+            </fieldset>
+            <fieldset>
+                <legend>Step 2: 개인 정보</legend>
+    
+                <ol class="list">
+                    <div class="element">
+                        <li>
+                            <label for="name">이름 </label>
+                            <input type="text" id="name" name="name" placeholder="5자미만 공백없이">
+                        </li>
+                    </div>
+                    <div class="element">
+                        <li>
+                            <label for="email">메일 주소 </label>
+                            <input type="email" id="email" name="email" placeholder="abcd@domain.com">
+                        </li>
+                    </div>
+                    <div class="element">
+                        <li>
+                            <label for="tel">연락처 </label>
+                            <input type="tel" id="tel" name="tel">
+                        </li>
+                    </div>
+                </ol>
+    
+            </fieldset>
+            <fieldset>
+                <legend>Step 3: 코딩 숙련도(상, 중, 하)</legend>
+    
+                <ol class="list">
+                    <div class="element">
+                        <li>
+                            <input type= "range" id="bar" name="bar">
+                        </li>
+                    </div>
+                </ol>
+    
+            </fieldset>
+            <fieldset>
+                <input type="submit" value="제출" id="btn">
+            </fieldset>
+    
+        </form>
+
+    </div>
+
+</body>
+</html>

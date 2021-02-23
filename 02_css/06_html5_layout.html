@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>html5_layout</title>
+
+    <style>
+
+        body {
+            width: 960px;
+            margin: 0 auto;
+            padding: 10px;
+        }
+
+        header {
+            background-color: lightsteelblue;
+            height: 100px;
+            padding: 0 10px;
+        }
+
+        section {
+            background-color: lightskyblue;
+            width: 680px;
+            height: 1730px;
+            float: left;
+        }
+
+        aside {
+            background-color: mediumaquamarine;
+            float: right;
+            width: 260px;
+            height: 1730px;
+            padding: 0 10px;
+        }
+        
+        footer {
+            background-color: mediumspringgreen;
+            clear: both;
+            height: 100px;
+            padding: 0 10px;
+        }
+
+        .img-container {
+            text-align: center;
+        }
+        .img-container img {
+            width: 500px;
+        }
+
+
+
+        #menu li {
+            float: left; /* 가로배치 */
+            margin-right: 20px;
+            padding: 3px 0;
+            font-size: 20px;
+        }
+        #menu {
+            list-style: none; /* 불릿 제거 (동그라미) */
+            padding-left: 0;
+            width: 600px;
+            margin: 0 20px 0 350px;
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <header>
+        <h1>header</h1>
+
+        <nav>
+            <ul id="menu">
+                <li><a href="#">html5</a></li>
+                <li><a href="#">css3</a></li>
+                <li><a href="#">javascript6</a></li>
+                <li><a href="#">jquery</a></li>
+                <li><a href="#">bootstrap</a></li>
+                <li><a href="#">react.js</a></li>
+                <li><a href="#">vue.js</a></li>
+            </ul>
+        </nav>
+
+    </header>
+
+    <section>
+        <article>
+
+            <h1>HTML5 Layout</h1>
+            <p>semantic tag란? 태그의 의미와 내용을 서로 맞게 구성해야 한다.</p>
+            <ul>
+                <!-- 머리 -->
+                <li>header : 사이트 전체의 헤더, article태그의 헤더 역할 시에 사용</li>
+                <!-- 특정 아이디들을 찾아가는 용도의 네비게이션 (블로그 왼쪽 표나 이런것들) -->
+                <li>nav : 네비게이션 표현. (역할만 맞으면 header하위, aside하위, footer하위 다 가능)</li>
+                <!-- 글귀, 내용, 본문  -->
+                <li>article : 본문내용, 독립적으로 표현가능한 단위</li>
+                <!-- 아티클이 많은 경우 묶어주는 용도  -->
+                <li>section : 연관된 컨텐츠를 그룹핑 / article 하위도 가능 / 여러 article 묶는 용도</li>
+                <!--div는 style, script적인 제어를 위한 그루핑 목적으로만 사용할 것.-->
+        
+                <li>aside : 본문내용과 별개인 부수적인 정보 대상. 광고/달력/목록 등</li>
+                <li>footer : 사이트 하단부. 저작권 정보/주소/연락처 등</li>
+            </ul>
+        
+            <div class="img-container">
+                <img src="sample/html5/article_section1.jpg" alt="">
+                <img src="sample/html5/html5-2.jpg" alt="">
+                <img src="sample/html5/html5-elements.png" alt="">
+            </div>
+
+        </article>
+    </section>
+
+    <aside>
+        <h1>aside</h1>
+    </aside>
+
+    <footer>
+        <h1>footer</h1>
+    </footer>
+
+
+
+
+
+
+</body>
+</html>

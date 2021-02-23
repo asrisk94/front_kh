@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text</title>
+</head>
+<body>
+    <h1>Text</h1>
+    <div class="wrapper">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit ab, vero reiciendis quisquam similique qui placeat perspiciatis voluptatum blanditiis earum fuga ad quos assumenda nostrum nulla nihil ut optio aliquam!</p>
+        <p>Suscipit aut quidem unde consequatur, praesentium nihil quasi repudiandae possimus placeat quaerat velit natus consectetur veritatis nam excepturi ea, facere alias eaque. Modi nulla ut praesentium recusandae harum vero atque.</p>
+        <p>Animi quod ad totam voluptatibus, nobis at tempora doloremque ratione vitae. Dignissimos iste, beatae reiciendis magni magnam dicta recusandae autem nihil impedit ratione ipsa pariatur, reprehenderit sapiente tempora sunt consectetur.</p>
+        <p>Soluta repellat beatae quisquam commodi doloribus iusto possimus ratione aperiam minima magni natus pariatur tempore, facilis nisi omnis cumque laboriosam consequuntur a porro similique molestiae animi officia et autem. Quas.</p>
+        <p>Nemo perferendis aut nesciunt aliquam omnis atque incidunt saepe minima illum explicabo! Consequatur, hic esse! Eaque cupiditate tempora veritatis ad, aliquid totam molestiae facere excepturi? Odit dolore nam ex ea.</p>
+    </div>
+    <style>
+    .wrapper p::first-letter {
+        font-size: 2em;
+    }
+    /* counter */
+    .wrapper {
+        counter-reset : num; /* 카운터 변수 */
+    }
+    .wrapper p::before {
+        counter-increment: num;
+        content: counter(num) ". ";
+    }
+    .wrapper p::after {
+        content: '😎';
+    }
+    .wrapper p::selection {
+        background-color: hotpink;
+        color: white;
+    }
+    .wrapper p {
+        line-height: 30px;
+    }
+
+    </style>
+    
+</body>
+</html>

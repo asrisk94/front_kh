@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
+    <style>
+        table {
+            border: 1px solid black;
+        }
+        th, td {
+            border: 1px solid black;
+        }
+    </style>
+
+    <script>
+        window.onload = function() {
+
+            var $tr = $("tr");
+            $tr.each(function(i, elem) {
+
+                var $elem = $(elem);
+                $elem.on("click", function() {
+
+                    $tr.children().css("backgroundColor", "white");
+                    $elem.children().css("backgroundColor", "red");
+                });
+
+            });
+
+        }
+    </script>
+
+</head>
+<body>
+    <table>
+        <tr>
+            <th>번호</th><th>제목</th><th>작성자</th>
+        </tr>
+        <tr>
+            <td>1</td><td>첫 번째 게시물입니다.</td><td>홍길동</td>
+        </tr>
+        <tr>
+            <td>2</td><td>두 번째 게시물입니다.</td><td>홍길동</td>
+        </tr>
+        <tr>
+            <td>3</td><td>세 번째 게시물입니다.</td><td>홍길동</td>
+        </tr>
+    </table>
+</body>
+</html>

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>each_is</title>
+    <script src="js/jquery-3.5.1.js"></script>
+</head>
+<body>
+    <h1>each_is</h1>
+
+    <h2>$.each</h2>
+
+    <input type="button" value="배열" id="btn1">
+    <input type="button" value="객체" id="btn2">
+
+    <script>
+
+        // js객체의 모든 속성을 순회
+        // $.each(obj, function(key, value) {})
+        $(btn2).on('click', function() {
+            var obj = {
+                name : "홍길동",
+                phone : "01012341234",
+                age : 30,
+                married : true,
+                say : function() {
+                    console.log(this.name + "!!!");
+                }
+            };
+
+            $.each(obj, function(k, v) {
+                console.log(k + " : " + v);
+            });
+        });
+
+
+
+        // js 배열을 순회
+        // $.each(arr, function(index, element) {})
+        $(btn1).on('click', function() {
+            var arr = ['홍길동', '신사임당', '이순신', '세종대왕'];
+            
+            $.each(arr, function(index, elem) {
+                console.log(index, elem);   // ,(콤마) 구분자로 출력할 요소 전달가능
+            });
+    
+        });
+    
+    </script>
+
+    <h2>$(selector).each</h2>
+
+    <input type="button" value="실행" id="btn3">
+
+    <div class="wrap">
+        <p>테스트1</p>
+        <p>테스트2</p>
+        <p>테스트3</p>
+    </div>
+
+    <script>
+        // jQuery 객체 요소에 대한 순회 메소드
+
+        $(btn3).click(function() {
+            $(".wrap p").each(function(i, elem) {
+                console.log(i, elem);
+                // each callbackFunction 안의 this는 elem 객체를 가리킨다
+
+                // js 태그엘리먼트 -> jquery 객체 (작업도 가능하다는 뜻)
+                $(elem).css("text-decoration", "underline");
+            });
+        });
+    </script>
+
+
+
+    <h1>class 제어</h1>
+
+    <div class="container">
+        <p class="font">아이템1</p>
+        <p class="bg">아이템2</p>
+        <p>아이템3</p>
+        <p>아이템4</p>
+        <p>아이템5</p>
+    </div>
+
+    <input type="button" value="addClass" id="btn4">
+    <input type="button" value="removeClass" id="btn5">
+    <input type="button" value="toggleClass" id="btn6">
+
+    <style>
+        .font {
+            font-family: "궁서", cursive;
+        }
+        .bg {
+            background-color: hotpink;
+        }
+    </style>
+
+    <script>
+
+        $(btn6).click(function() {
+            $(".container p")
+                .toggleClass("font");
+        });
+
+        $(btn5).click(function() {
+            $(".container p")
+                .removeClass("font");
+        });
+
+        $(btn4).click(function() {
+            $(".container p")
+                .addClass("font")
+                .addClass("bg");
+        });
+
+    </script>
+
+
+
+    <div class="wrapper">
+        <h1>안녕1</h1>
+        <h1>안녕2</h1>
+        <h1>안녕3</h1>
+        <h1>안녕4</h1>
+        <h1>안녕5</h1>
+    </div>
+    
+    <style>
+        .wrapper h1 {
+            display: inline-block;
+            margin-right: 15px;
+        }
+    
+    .c1 { color: red; }
+    .c2 { color: orange; }
+    .c3 { color: yellow; }
+    .c4 { color: green; }
+    .c5 { color: blue; }
+    </style>
+
+    <script>
+        $(".wrapper h1").each(function(i, elem) {
+            elem.onclick = function() {
+                // this, e.target 써도 된다. (이벤트 발생객체)
+                console.log(elem);
+                elem.classList.toggle("c" + (i+1));
+                // $(elem).toggleClass("c" + (i+1));
+            };
+        });
+    </script>
+
+
+
+    <hr>
+
+    <h1>is</h1>
+
+    <div class="wrapper2">
+        <h2>test1</h2>
+        <h3 class="check">test2</h3>
+        <h2 class="check">test3</h2>
+        <h3>test4</h3>
+    </div>
+
+    <input type="button" value="실행" id="btn7">
+
+    <script>
+        // is(selector) : boolean
+        //   현재요소가 selector와 일치여부
+
+        $(btn7).click(function() {
+
+            $(".wrapper2 *").each(function(i, elem) {
+                console.log(this, $(this).is("h2"));        // h2냐
+                console.log(this, $(this).is("h2.check"));    // .check냐
+            
+                var $this = $(this);
+                if($this.is("h2.check")) {
+                    $this.css({
+                        "color" : "white",
+                        "background-color" : "red"
+                    });
+                }
+            });
+        });
+    </script>
+
+
+
+    <hr>
+
+    <!-- (input:checkbox[name=fruit][value=fruit$]#fruit$+label[for=fruit$])*3 -->
+    <input type="checkbox" name="fruit" id="fruit1" value="사과">
+    <label for="fruit1">사과</label>
+    <input type="checkbox" name="fruit" id="fruit2" value="딸기">
+    <label for="fruit2">딸기</label>
+    <input type="checkbox" name="fruit" id="fruit3" value="키위">
+    <label for="fruit3">키위</label>
+
+    <input type="button" value="확인" id="btn8">
+    
+    <script>
+
+        // 체크박스 체크를 통해 :checked된 애들만 출력
+        $(btn8).click(function() {
+            $("[name=fruit]").each(function(i, elem) {
+                if($(elem).is(":checked")) {
+                    console.log($(elem).val());
+                };
+            });
+        });
+    
+    </script>
+
+</body>
+</html>

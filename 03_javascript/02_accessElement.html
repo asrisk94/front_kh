@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>요소 접근하기</title>
+</head>
+
+<body>
+    <h1>요소 접근하기</h1>
+
+    <ul>
+        <li class="odd">테스트1</li>
+        <li class="even">테스트2</li>
+        <li class="odd" id="test3">테스트3</li>
+        <li class="even">테스트4</li>
+        <li class="odd">테스트5</li>
+    </ul>
+
+    <input type="button" value="실행" onclick="test1()" style="margin: 10px;">
+
+
+    <script>
+        function test1() {
+
+            // 문서가 브라우저에 의해 해석될 때, html tag는 자바스크립트 객체모델로 저장된다.
+            
+            // 1. 아이디로 접근
+            var el = document.getElementById("test3");
+            console.log(el);
+            console.dir(el);                // 내부 속성값 전체 보기
+            console.log(typeof el);
+
+            el.style.color = "hotpink";     // test3의 색이 바뀌었다.
+
+
+
+            // 2. 태그네임으로 접근
+            var arr = document.getElementsByTagName("li");  // 태그네임 li를 가져옴
+            console.log(arr);
+            console.log(typeof arr);
+
+            for(var i=0; i<arr.length; i++) {
+                arr[i].innerHTML = "으라차차" + (i+1);  // 태그 내부를 다른 내용으로 변경해서 사용 가능
+                console.log(arr[i].innerHTML);          // 태그내부 html 반환
+            }
+
+
+
+            // 3. 클래스명으로 접근
+            var evens = document.getElementsByClassName("even");
+            var odd = document.getElementsByClassName("odd");
+            console.log(evens);
+            console.log(odd);
+
+            for(var i=0; i<evens.length; i++) {
+                evens[i].style.backgroundColor = "springgreen";  // 카멜케이싱 지킬것. backgroundColor
+            }
+            for(var i=0; i<odd.length; i++) {
+                odd[i].style.color = "skyblue";
+                odd[i].style.backgroundColor = "black";
+            }
+        }
+
+    </script>
+    
+    <form action="">
+
+        <fieldset>
+            <legend>취미</legend>
+
+            <ul style="list-style:none; line-height: 30px;">
+                <li>
+                    <input type="checkbox" name="hobby" id="music" value="음악감상">
+                    <label for="music">음악감상</label>
+                    <input type="checkbox" name="hobby" id="movie" value="영화감상">
+                    <label for="movie">영화감상</label>
+                    <input type="checkbox" name="hobby" id="soccer" value="축구">
+                    <label for="soccer">축구</label>
+                    <input type="checkbox" name="hobby" id="training" value="운동">
+                    <label for="training">운동</label>
+                </li>
+                <li>
+                    <input type="button" value="확인" onclick="test2();">
+                </li>
+            </ul>
+
+        </fieldset>
+    </form>
+
+    <script>
+        function test2() {
+            var hobbyArr = document.getElementsByName("hobby");     // name으로 따옴
+            console.log(hobbyArr);
+            console.log(typeof hobbyArr);
+
+            var result = '';
+            for(var i=0; i<hobbyArr.length; i++) {
+                
+                var chk = hobbyArr[i];
+                
+                if(chk.checked) {               // 체크 되었는지 확인해주는 함수
+                    console.log(chk.value);
+                    result += chk.value + ' ';
+                }
+            }
+            alert(result);
+        }
+    </script>
+
+    <hr>
+
+
+
+
+
+    <p>실습문제 : input#userName의 값을 div#area1에 출력하세요.</p>
+
+    <form action="">
+        <label for="userName">이름 입력 : </label>
+        <input type="text" id="userName" name="userName">
+        <input type="button" value="사용자 입력값 확인" onclick="textinput();">
+    </form>
+
+    <br>
+
+    <div id="area1"
+        style=" 
+            width: 500px;
+            height: 300px;
+            background-color: blanchedalmond;
+            border: 1px solid #000;
+        ">
+    </div>
+
+    <script>
+        function textinput() {
+            var name = document.getElementById("userName");
+            var area1 = document.getElementById("area1");
+            
+            // 위처럼 변수에 담지 않고 비표준 id값을 바로 변수처럼 사용해도 된다.
+            // 아직 표준이 아니긴 한데, 아마 곧 표준으로 들어가지 않을까.
+
+            area1.innerHTML = name.value;
+
+            name.value = '';    // 초기화
+            name.focus();       // 포커스처리
+        }
+
+    </script>
+
+
+
+    <p>@실습문제 : input#point의 값이 변경될 때마다 span#pointCheck에 출력하세요.</p>
+
+    <form action="">
+        <label for="point">점수 입력 : </label>
+        <input type="range" name="point" id="point" oninput="range();">
+        <span id="pointcheck">0</span>
+    </form>
+
+    <script>
+
+            var point = document.getElementById('point');
+            var pointcheck = document.getElementById('pointcheck');
+    
+            pointcheck.innerHTML = point.value;
+
+        function range() {
+            var point = document.getElementById('point');
+            var pointcheck = document.getElementById('pointcheck');
+    
+            pointcheck.innerHTML = point.value;
+        }
+
+    </script>
+
+    <hr>
+
+
+
+    <h2>className 제어하기</h2>
+
+    <table id="tbl">
+        <tr>
+            <th colspan="3">수강신청</th>
+        </tr>
+
+        <tr>
+            <td colspan="3">
+                <input type="checkbox" id="chkAll" onchange="checkAllOrNone(this);">
+                <!--inline 속성에 사용된 this는 태그객체 자신을 가리킴-->
+                <label for="chkAll">모두선택/해제</label>
+            </td>
+        </tr>
+        <tr>
+            <!-- (td>input:checkbox[name=subject]+label)*3 -->
+            <td class="font"><input type="checkbox" name="subject" id="kor" onclick="checkOneForAll(this);"><label for="kor">국어</label></td>
+            <td class="font"><input type="checkbox" name="subject" id="eng" onclick="checkOneForAll(this);"><label for="eng">영어</label></td>
+            <td class="font"><input type="checkbox" name="subject" id="math" onclick="checkOneForAll(this);"><label for="math">수학</label></td>
+        </tr>
+    </table>
+
+    <script>
+
+        // function checkAllOrNone() {
+
+        //     var subjects = document.getElementsByName("subject");
+        //     var chkAll = document.getElementById("chkAll");
+
+        //     for(var i=0; i<subjects.length; i++) {
+        //         subjects[i].checked = chkAll.checked;   // 모두체크의 값을 각 서브젝트에 다 담음
+        //     }
+        // }
+        function checkAllOrNone(chkAll) {           // 이렇게 매개변수로도 가능
+
+            var subjects = document.getElementsByName("subject");
+
+            for(var i=0; i<subjects.length; i++) {
+                // 개별 체크박스 제어
+                subjects[i].checked = chkAll.checked;   // 모두체크의 값을 각 서브젝트에 다 담음
+            
+
+
+                // 체크박스별 부모 td 클래스값 제어
+
+                // subjects[i].parentElement.className = 
+                //     chkAll.checked ? "subject-checked font" : "font";
+
+                    // 또는!
+
+                // if(chkAll.checked) {
+                //     subjects[i].parentElement.className = 'subject-checked';
+                // }
+                // else {
+                //     subjects[i].parentElement.className = 'font';
+                // }
+
+                    // 또는!
+                
+                if(chkAll.checked) {
+                    subjects[i].parentElement.classList.add("subject-checked");
+                }
+                else {
+                    subjects[i].parentElement.classList.remove("subject-checked");
+                }
+                
+
+
+            }
+
+        }
+
+
+        
+        function checkOneForAll(subject) {
+
+            // 부모 td에 클래스값 부여하기.
+
+            // console.log(subject);
+            var parentTd = subject.parentElement;   // 부모 요소 가져오기
+            console.log(parentTd);
+            
+            // 체크 여부에 따라 클래스값 부여/회수
+            if(subject.checked)
+                parentTd.classList.add("subject-checked");
+            else
+                parentTd.classList.remove("subject-checked");
+            // 이렇게 클래스리스트를 이용해 여러 클래스를 담은 채로 이용할 수 있다.
+
+
+            
+            var subjects = document.getElementsByName("subject");
+            var chkAll = document.getElementById("chkAll");
+
+            var flag = false;
+
+            for(var i=0; i<subjects.length; i++) {
+                if(subjects[i].checked == false) {
+                    flag = true;
+                    break;
+                }
+            }
+
+            if(flag) {
+                chkAll.checked = false;
+            }
+            if(!flag) {
+                chkAll.checked = true;
+            }
+        }
+
+    </script>
+
+
+
+    <hr>
+
+    <p>@실습문제 : classList속성을 이용해서 코드를 개선하세요.</p>
+
+    <h2>classList</h2>
+    <p>tag element의 className속성을 제어할 수 있는 함수를 가진 속성</p>
+    <ul>
+        <li><input type="button" value="add" onclick="add();"></li>
+        <li><input type="button" value="remove" onclick="remove();"></li>
+        <li><input type="button" value="toggle" onclick="toggle();"></li>
+        <li><input type="button" value="contains" onclick="testContains();"></li>
+    </ul>
+    <div id="test" class="border font">안녕하세요.</div>
+
+    <style>
+    .border {
+        border: 1px solid black;
+    }
+    .bg-color {
+        background-color: springgreen;
+    }
+    </style>
+
+    <script>
+    function add(){
+        var test = document.getElementById("test");
+        test.classList.add("bg-color");
+        console.dir(test);
+    }
+    function remove(){
+        var test = document.getElementById("test");
+        test.classList.remove("bg-color");
+        console.dir(test);
+    }
+    function toggle(){
+        var test = document.getElementById("test");
+        test.classList.toggle("bg-color");          // 껐다 켰다
+        console.dir(test);
+    }
+    function testContains(){
+        var test = document.getElementById("test");
+        test.classList.contains("bg-color");
+        alert(test.classList.contains("bg-color"));
+    }
+    </script>
+
+
+    <style>
+        table#tbl {
+            border: 1px solid #000;
+            border-collapse: collapse;
+            width: 500px;
+            margin: 0, auto;
+        }
+
+        table#tbl th, table#tbl td {
+            border: 1px solid #000;
+            text-align: center;
+            padding: 5px;
+        }
+
+
+
+        .subject-checked {
+            background-color:thistle;
+            color: white;
+        }
+
+        .font {
+            font-family: "궁서체";
+        }
+
+    </style>
+
+
+
+    <hr>
+ 
+    <h2>querySelector | querySelectorAll</h2>
+
+    <input type="button" value="querySelector" onclick="test5();">
+    <input type="button" value="querySelectorAll" onclick="test6();">
+    <hr>
+
+    <!-- (p.foo>lorem)*3 -->
+    <p class="foo">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ex ipsam minus distinctio libero, vero consequuntur tenetur quae dicta quas quidem asperiores commodi cumque omnis maxime dignissimos animi atque unde voluptate.</p>
+    <p class="foo" id="myp">Odit, eligendi, ducimus praesentium aspernatur recusandae perferendis voluptatibus fugiat beatae, dolorem tenetur error doloribus exercitationem perspiciatis provident commodi laboriosam eum consequatur nesciunt. Mollitia debitis eaque, voluptatibus reprehenderit odit id atque.</p>
+    <p class="foo">Quae inventore porro est unde? Quas voluptatibus earum vel harum, perspiciatis nobis quisquam aliquid porro consequuntur placeat doloremque deleniti. Ullam, harum? Quo aperiam fugit eveniet. Eligendi explicabo nobis quibusdam dolore!</p>
+
+    <script>
+        function test5() {
+            // var p = document.querySelector("#myp");     // 해당 요소 선택.
+            var p = document.querySelector(".foo");        // 이렇게 해도 맨 처음 foo클래스 하나만 선택됨. 
+            console.log(p);
+            p.style.color = 'hotpink';                  // 위에 id가 myp인 p만 지정됨.
+        }
+
+        function test6() {
+            var pArr = document.querySelectorAll(".foo");
+            console.log(pArr);
+
+            for(var i=0; i<pArr.length; i++) {
+                pArr[i].style.color = 'skyblue';       // 이러면 전체 가능
+            }
+        }
+    </script>
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

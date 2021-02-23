@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <style>
+        .wrapper {
+            width: 200px;
+            height: 200px;
+            background-color: orangered;
+        }
+        .bg {
+            background-color: hotpink;
+        }
+    </style>
+
+    <script>
+        $(function() {
+
+            $("#color").click(function() {
+                $(".wrapper").toggleClass("bg");
+            });
+            
+            
+        })        
+    </script>
+
+</head>
+<body>
+    <div class="wrapper">
+        <input type="button" value="색상 변경하기" id="color">
+    </div>
+</body>
+</html>
